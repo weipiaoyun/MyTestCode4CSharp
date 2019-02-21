@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Socket4Client
 {
-    public partial class Form1 : Form
+    public partial class Socket4Client : Form
     {
-        public Form1()
+        public Socket4Client()
         {
             InitializeComponent();
         }
