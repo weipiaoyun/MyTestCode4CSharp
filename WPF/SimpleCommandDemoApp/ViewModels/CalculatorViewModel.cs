@@ -8,9 +8,9 @@ using SimpleCommandDemoApp.Commands.Specific;
 
 namespace SimpleCommandDemoApp.ViewModels
 {
-    public class CalculatorViewModel
+    public class CalculatorViewModel : ViewModelBase
     {
-   
+
         private double firstValue;
         private double secondValue;
         private double output;
@@ -24,6 +24,7 @@ namespace SimpleCommandDemoApp.ViewModels
             set
             {
                 firstValue = value;
+                OnPropertyChanged("FirstValue");
             }
         }
 
@@ -39,6 +40,7 @@ namespace SimpleCommandDemoApp.ViewModels
             set
             {
                 secondValue = value;
+                OnPropertyChanged("SecondValue");
             }
         }
 
@@ -52,6 +54,8 @@ namespace SimpleCommandDemoApp.ViewModels
             set
             {
                 output = value;
+
+                OnPropertyChanged("Output");
             }
         }
 
@@ -59,8 +63,8 @@ namespace SimpleCommandDemoApp.ViewModels
         private PlusCommand plusCommand;
         public CalculatorViewModel()
         {
-           
-                plusCommand = new PlusCommand(this);
+
+            plusCommand = new PlusCommand(this);
         }
 
         public void Add()
@@ -68,11 +72,12 @@ namespace SimpleCommandDemoApp.ViewModels
             Output = firstValue + secondValue;
         }
 
-       public ICommand AddCommand
+        public ICommand AddCommand
         {
             get
             {
-                return plusCommand;
+                return new Commands.Generic.RelayCommand(Add);
+                //return plusCommand;
                 // return new RelayCommand();
             }
         }

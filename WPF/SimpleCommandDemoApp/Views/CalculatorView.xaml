@@ -9,12 +9,25 @@
         mc:Ignorable="d"
          Height="300" Width="300">
 
+
+    <!--Here the xmlns:vm="clr-namespace:SimpleCommandDemoApp.ViewModels" -vm is an alias to our namespace ViewModels. It’s required so that the framework knows where CalculatorViewModel is available.-->
+
+    <!--Set Resources in UserContrl-->
     <UserControl.Resources>
-            <vm:CalculatorViewModel x:Key="CalculatorVm" />
-        </UserControl.Resources>
+        <vm:CalculatorViewModel x:Key="CalculatorVm" />
+    </UserControl.Resources>
 
 
-    <Grid DataContext="{Binding Source={StaticResource CalculatorVm}}" Background="#FFCCCC">
+    <!--set the DataContext in XAML-->
+    <!--Now the MainWindowView knows that’s its ViewModel is CalculatorViewModel.-->
+    <UserControl.DataContext>
+        <vm:CalculatorViewModel/>
+    </UserControl.DataContext>
+
+
+    <!--The Next Two Line is the same means,Because we have indicate the DataContext above-->
+    <!--<Grid DataContext="{Binding Source={StaticResource CalculatorVm}}" Background="#FFCCCC">-->
+    <Grid Background="#FFCCCC">
         <Grid.RowDefinitions>
             <RowDefinition Height="80"></RowDefinition>
             <RowDefinition></RowDefinition>
