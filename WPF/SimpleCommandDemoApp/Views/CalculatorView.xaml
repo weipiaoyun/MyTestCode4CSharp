@@ -27,34 +27,46 @@
 
     <!--The Next Two Line is the same means,Because we have indicate the DataContext above-->
     <!--<Grid DataContext="{Binding Source={StaticResource CalculatorVm}}" Background="#FFCCCC">-->
-    <Grid Background="#FFCCCC">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="80"></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition Height="80"></RowDefinition>
-            <RowDefinition Height="44"></RowDefinition>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-        </Grid.ColumnDefinitions>
+    <StackPanel>
+        <Grid Background="#FFCCCC">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="80"></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition Height="80"></RowDefinition>
+                <RowDefinition Height="44"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
 
-        <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" FontSize="25" VerticalAlignment="Top" HorizontalAlignment="Center" Foreground="Blue" Content="ICommand Demo"/>
-        <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,0,0" VerticalAlignment="Bottom" FontSize="20"  Content="First Input"/>
-        <Label Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2" Margin="10,0,0,0" VerticalAlignment="Bottom" FontSize="20"  Content="Second Input"/>
+            <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" FontSize="25" VerticalAlignment="Top" HorizontalAlignment="Center" Foreground="Blue" Content="ICommand Demo"/>
+            <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,0,0" VerticalAlignment="Bottom" FontSize="20"  Content="First Input"/>
+            <Label Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2" Margin="10,0,0,0" VerticalAlignment="Bottom" FontSize="20"  Content="Second Input"/>
 
-        <TextBox Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,0,0" FontSize="20" HorizontalAlignment="Left" Height="30"  Width="150" TextAlignment="Center" Text="{Binding FirstValue, Mode=TwoWay}"/>
-        <TextBox Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Margin="10,0,0,0" FontSize="20" HorizontalAlignment="Left"  Height="30" Width="150" TextAlignment="Center" Text="{Binding SecondValue, Mode=TwoWay}"/>
+            <TextBox Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,0,0" FontSize="20" HorizontalAlignment="Left" Height="30"  Width="150" TextAlignment="Center" Text="{Binding FirstValue, Mode=TwoWay}"/>
+            <TextBox Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Margin="10,0,0,0" FontSize="20" HorizontalAlignment="Left"  Height="30" Width="150" TextAlignment="Center" Text="{Binding SecondValue, Mode=TwoWay}"/>
 
-        <Rectangle Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4" Fill="LightBlue"></Rectangle>
-        <Button Grid.Row="2" Grid.Column="0" Content="+"  Margin="10,0,0,0" HorizontalAlignment="Left" Height="50" Width="50" FontSize="30" Command="{Binding AddCommand}"></Button>
-        <Button Grid.Row="2" Grid.Column="1" Content="-"  Margin="10,0,0,0" HorizontalAlignment="Left" Height="50" Width="50" FontSize="30" Command="{Binding SubstractCommand}"></Button>
-        <Button Grid.Row="2" Grid.Column="2" Content="*"  Margin="10,0,0,0" HorizontalAlignment="Left" Height="50" Width="50" FontSize="30" Command="{Binding MultiplyCommand}"></Button>
-        <Button Grid.Row="2" Grid.Column="3" Content="%"  Margin="10,0,0,0" HorizontalAlignment="Left" Height="50" Width="50" FontSize="30" Command="{Binding DivideCommand}"></Button>
+            <Rectangle Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4" Fill="LightBlue"></Rectangle>
+            <Button Grid.Row="2" Grid.Column="0" Content="+"  Margin="10,0,0,0" HorizontalAlignment="Left" Height="50" Width="50" FontSize="30" Command="{Binding AddCommand}"></Button>
+            <Button Grid.Row="2" Grid.Column="1" Content="-"  Margin="10,0,0,0" HorizontalAlignment="Left" Height="50" Width="50" FontSize="30" Command="{Binding SubstractCommand}"></Button>
+            <Button Grid.Row="2" Grid.Column="2" Content="*"  Margin="10,0,0,0" HorizontalAlignment="Left" Height="50" Width="50" FontSize="30" Command="{Binding MultiplyCommand}"></Button>
+            <Button Grid.Row="2" Grid.Column="3" Content="%"  Margin="10,0,0,0" HorizontalAlignment="Left" Height="50" Width="50" FontSize="30" Command="{Binding DivideCommand}"></Button>
 
-        <Label Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" FontSize="25" Margin="10,0,0,0" HorizontalAlignment="Left" Height="50"  Content="Result : "/>
-        <TextBlock Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2" FontSize="20" Margin="10,0,0,0" Background="BlanchedAlmond" TextAlignment="Center"  HorizontalAlignment="Left" Height="36" Width="150" Text="{Binding Output}"/>
-    </Grid>
+            <Label Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" FontSize="25" Margin="10,0,0,0" HorizontalAlignment="Left" Height="50"  Content="Result : "/>
+            <TextBlock Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2" FontSize="20" Margin="10,0,0,0" Background="BlanchedAlmond" TextAlignment="Center"  HorizontalAlignment="Left" Height="36" Width="150" Text="{Binding Output}"/>
+        </Grid>
+
+        <StackPanel MinHeight="200">
+            <DataGrid  MinHeight="300" x:Name="GlobalAddress" ItemsSource="{Binding DataListsTest}" SelectionMode="Single" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" AutoGenerateColumns="False" CanUserAddRows="False" HeadersVisibility="Column" CanUserReorderColumns="False" IsReadOnly="True" SelectionUnit="FullRow" HorizontalContentAlignment="Right" RowHeaderWidth="1" >
+                <DataGrid.Columns>
+                    <DataGridTextColumn  Width="9*" Binding="{Binding Para}" Header="参数" CanUserSort="False" FontSize="13" />
+                    <DataGridTextColumn  Width="10*" Binding="{Binding Val}" Header="状态" CanUserSort="False" FontSize="13"/>
+                </DataGrid.Columns>
+            </DataGrid>
+
+        </StackPanel>
+    </StackPanel>
 </UserControl>

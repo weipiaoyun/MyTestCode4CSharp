@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using SimpleCommandDemoApp.Commands.Specific;
+using SimpleCommandDemoApp.Model;
 
 namespace SimpleCommandDemoApp.ViewModels
 {
@@ -14,6 +16,30 @@ namespace SimpleCommandDemoApp.ViewModels
         private double firstValue;
         private double secondValue;
         private double output;
+
+        ObservableCollection<DataList> dataLists = new ObservableCollection<DataList>();
+
+        public ObservableCollection<DataList> DataLists
+        {
+            get { return dataLists;}
+            set
+            {
+                OnPropertyChanged("DataLists");
+
+            }
+        }
+
+        List<DataList> dataListsTest = new List<DataList>();
+
+        public List<DataList> DataListsTest
+        {
+            get { return dataListsTest; }
+            set
+            {
+                OnPropertyChanged("DataListsTest");
+
+            }
+        }
 
         public double FirstValue
         {
@@ -70,6 +96,23 @@ namespace SimpleCommandDemoApp.ViewModels
         public void Add()
         {
             Output = firstValue + secondValue;
+            //check The differences between ObservableCollection<T> and List<T> below,
+            // DataLists is an ObservableCollection<T> class
+            // and DataListsTest is a List<T> class
+            if (DataLists != null)
+            {
+                DataLists.Add(new DataList() { Para = "p", Val = "v" });
+                DataLists[0].Val = "v1";
+
+                DataListsTest.Add(new DataList() {Para = "ptest", Val = "vtest"});
+                DataListsTest[0].Val = "v1test";
+
+            }
+            else
+            {
+		DataLists = new ObservableCollection<DataList>();
+                DataListsTest = new List<DataList>();
+            }
         }
 
         public ICommand AddCommand

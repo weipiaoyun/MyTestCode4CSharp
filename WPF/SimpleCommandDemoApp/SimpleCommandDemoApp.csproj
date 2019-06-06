@@ -57,6 +57,7 @@
     </ApplicationDefinition>
     <Compile Include="Commands\Generic\RelayCommand.cs" />
     <Compile Include="Commands\Specific\PlusCommand .cs" />
+    <Compile Include="Model\DataList.cs" />
     <Compile Include="ViewModels\CalculatorViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="Views\CalculatorView.xaml.cs">
